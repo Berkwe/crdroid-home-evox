@@ -1,0 +1,14 @@
+crDroid Home for Evolution X
+Port scripts and Recents overlay: Copyright 2026 berkwe.
+
+OmniJawsClient derives from:
+Copyright (C) 2021 The OmniROM project
+Copyright (C) 2022-2025 crDroid Android project
+Licensed under the Apache License, Version 2.0.
+
+The launcher, ROM inputs, and their bundled third-party components retain
+their upstream copyright notices and licenses. The root LICENSE applies
+to this repository's original port tooling and overlay; it does not replace
+the licenses of every component in an APK or ROM.
+
+Upstream references and exact source revisions are listed in docs/SOURCES.md.

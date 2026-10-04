@@ -1,0 +1,37 @@
+name: Build module
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-java@de7274f081f381c8f8158605e0321c36c376e2e6 # v6.0.1
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Download locked ROM inputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p build
+          gh release download build-inputs --repo "$GITHUB_REPOSITORY" --pattern source-inputs.zip --dir build
+          python3 scripts/unpack_inputs.py build/source-inputs.zip
+      - name: Prepare build tools
+        run: |
+          python3 scripts/setup_tools.py
+          "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" 'build-tools;37.0.0'
+      - name: Build and verify module
+        run: python3 scripts/build.py --build-tools "$ANDROID_HOME/build-tools/37.0.0"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: crDroidHome-EvoX-v3
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30

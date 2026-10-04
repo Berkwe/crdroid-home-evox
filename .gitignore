@@ -1,0 +1,9 @@
+/inputs/
+/build/
+/dist/
+/tools/
+__pycache__/
+*.class
+*.idsig
+*.pk8
+*.pem
