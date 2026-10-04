@@ -15,12 +15,13 @@ Girdiler `crDroidAndroid-16.0-20260811-Spacewar-v12.11` ROM'undan çıkarıldı.
 
 ## ROM girdileri
 
-`build-inputs` release'indeki arşiv yalnızca bu iki dosyayı içerir. Hash'leri `inputs.lock.json` içinde kilitlidir.
+`build-inputs-v4` release'indeki arşiv aşağıdaki üç dosyayı içerir. Hash'leri `inputs.lock.json` içinde kilitlidir. v3'ün iki dosyalık girdileri eski `build-inputs` release'inde korunur.
 
 | Arşivdeki isim | ROM içindeki yol | SHA-256 |
 |---|---|---|
 | `framework.jar` | `system/system/framework/framework.jar` | `fcc4989e81a739dba53cda6a6c201bf49ac09a1b1ab084a39a105ac50ed10d6d` |
 | `Launcher3QuickStep.apk` | `system_ext/priv-app/Launcher3QuickStep/Launcher3QuickStep.apk` | `6e51e0d5b643b4dea0037f19e1c3e9d617e4fee837f605e4847339eb7dca0519` |
+| `EvoX-framework-res.apk` | Hedef cihaz: `/system/framework/framework-res.apk` | `6597259f8f6964e74e919a679fa1fd8b028b6b65ddb978839123a0fea298a69b` |
 
 Framework JAR yalnızca derleme girdisidir. Son modüle eklenmez ve cihaz framework'ünün üzerine mount edilmez.
 
