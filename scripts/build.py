@@ -72,7 +72,19 @@ def main():
     target = module/'system/system_ext/priv-app/Launcher3QuickStep/Launcher3QuickStep.apk'
     target.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy2(apk, target)
-    output = dist/'crDroidHome-EvoX-v3.zip'
+    # Resolve private Android dimension references against the target ROM,
+    # rather than the different resource IDs used by the source ROM.
+    nav_source = ROOT/'overlay-navigation'
+    run(tools/'aapt2', 'compile', '--dir', nav_source/'res', '-o', build/'nav-resources.zip')
+    run(tools/'aapt2', 'link', '-I', args.inputs/'EvoX-framework-res.apk',
+        '--manifest', nav_source/'AndroidManifest.xml', '-o', build/'nav-unsigned.apk',
+        build/'nav-resources.zip')
+    run(tools/'zipalign', '-f', '-p', '4', build/'nav-unsigned.apk', build/'nav-aligned.apk')
+    nav_apk = module/'system/product/overlay/CrDroidNavigationCompat.apk'
+    run(tools/'apksigner', 'sign', '--key', args.keys/'platform.pk8',
+        '--cert', args.keys/'platform.x509.pem', '--out', nav_apk, build/'nav-aligned.apk')
+    run(tools/'apksigner', 'verify', nav_apk)
+    output = dist/'crDroidHome-EvoX-v4.zip'
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED, compresslevel=9) as out:
         for path in sorted(module.rglob('*')):
             if not path.is_file() and not path.is_symlink(): continue
@@ -89,6 +101,7 @@ def main():
     (dist/'build-report.json').write_text(json.dumps({
         'original_entries_preserved': len(unchanged), 'omnijaws_classes': 9,
         'apk_sha256': digest(apk), 'certificate_sha256': CERT,
+        'navigation_overlay_sha256': digest(nav_apk),
         'module_sha256': digest(output), 'device_tested': False,
         'note': 'Build checks passed. Runtime testing of this artifact is separate.'
     }, indent=2)+'\n')

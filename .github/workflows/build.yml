@@ -21,8 +21,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p build
-          gh release download build-inputs --repo "$GITHUB_REPOSITORY" --pattern source-inputs.zip --dir build
-          python3 scripts/unpack_inputs.py build/source-inputs.zip
+          gh release download build-inputs-v4 --repo "$GITHUB_REPOSITORY" --pattern source-inputs-v4.zip --dir build
+          python3 scripts/unpack_inputs.py build/source-inputs-v4.zip
       - name: Prepare build tools
         run: |
           python3 scripts/setup_tools.py
@@ -31,7 +31,7 @@ jobs:
         run: python3 scripts/build.py --build-tools "$ANDROID_HOME/build-tools/37.0.0"
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
-          name: crDroidHome-EvoX-v3
+          name: crDroidHome-EvoX-v4
           path: dist/
           if-no-files-found: error
           retention-days: 30

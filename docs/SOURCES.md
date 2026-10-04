@@ -26,6 +26,8 @@ Framework JAR yalnızca derleme girdisidir. Son modüle eklenmez ve cihaz framew
 
 Permission XML'leri kaynak ROM'un `system_ext/etc/permissions` dizininden alındı. Recents RRO bu port için yazıldı; kaynak XML'leri `overlay/` dizininde. Küçük, cihazda denenmiş compiled RRO `module/system/product/overlay/` altında korunuyor. RRO'nun SHA-256 değeri `5a066310fe30b2be3146e3e8aaebbcb4a11d937b3c6a0f84a9fe15cdd71f3ee3`.
 
+v4 için üçüncü girdi, test cihazındaki Evolution X 11.10 / Android 16 ROM’unun `/system/framework/framework-res.apk` dosyasıdır. Arşivde `EvoX-framework-res.apk` adıyla bulunur; SHA-256: `6597259f8f6964e74e919a679fa1fd8b028b6b65ddb978839123a0fea298a69b`. Yalnızca `overlay-navigation/` kaynağını derlerken kullanılır; son modülde bulunmaz.
+
 ## Lisans
 
 Port scriptleri ve bu repo için yazılan overlay Apache-2.0 lisansı altında. Upstream kod, ROM dosyaları ve içerdikleri üçüncü taraf bileşenler kendi lisanslarını korur. OmniJawsClient kaynak başlığı OmniROM ve crDroid teliflerini içerir. Bu repo launcher'ın, OmniJaws'ın veya Evolution X'in sahipliğini iddia etmez.

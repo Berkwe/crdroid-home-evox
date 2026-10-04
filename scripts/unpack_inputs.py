@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Extract only the two hash-locked ROM inputs from a release archive."""
+"""Extract only the hash-locked ROM inputs from a release archive."""
 import hashlib
 import json
 import pathlib

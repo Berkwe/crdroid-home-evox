@@ -33,3 +33,5 @@ Test edilen patched APK SHA-256:
 ```
 
 Bu sonuçlar yalnızca belirtilen kurulum ve test süresi için geçerli. Diğer ROM'lar, farklı imzalı launcher sürümleri, uzun süreli hava güncellemeleri ve tüm ayar kombinasyonları doğrulanmadı. Derleme çıktısının APK hash'i bu değerle eşleşmiyorsa yeni çıktı ayrıca cihazda denenmelidir.
+
+v3'ün sonraki kullanımında navigasyon çubuğu ve klavye boşluğu sorunu bulundu. v4 düzeltmesinin nedeni, uygulaması ve cihaz doğrulaması [NAVIGATION.md](NAVIGATION.md) içinde. v4 aynı launcher APK'sını koruyup küçük bir navigasyon uyumluluk RRO'su ekler.

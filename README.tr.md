@@ -24,9 +24,13 @@ Framework dosyalarını veya SystemUI'yi değiştirmiyor. Modülü kapatıp yeni
 
 Bu modül Pixel Launcher’ın çalışmasını da bozuyor; Pixel Launcher “durduruldu” hatası verebiliyor. Kurulu olduğu sürece varsayılan Home uygulaması olarak crDroid launcher’ını kullan. Pixel Launcher’a dönmek için önce modülü kapatıp telefonu yeniden başlat.
 
+## v4 navigasyon düzeltmesi
+
+v4, v3’te görülen kayıp hareket çubuğunu ve klavye altındaki fazla boşluğu düzeltiyor. Küçük bir overlay, launcher’ın navigasyon ölçülerini Evolution X’teki doğru kaynaklara bağlıyor. Launcher APK’sı ve mevcut Recents overlay’i korunuyor.
+
 ## Kurulum
 
-1. [Releases](https://github.com/Berkwe/crdroid-home-evox/releases/latest) sayfasından `crDroidHome-EvoX-v3.zip` dosyasını indir.
+1. [Releases](https://github.com/Berkwe/crdroid-home-evox/releases/latest) sayfasından `crDroidHome-EvoX-v4.zip` dosyasını indir.
 2. Önceki launcher modülünü ve ayarlarını yedekle. Aynı işi yapan başka modüller varsa çakışabilir.
 3. Mountify kurulu root yöneticisinden ZIP'i yükle ve telefonu yeniden başlat.
 4. Gerekirse varsayılan Home uygulaması olarak crDroid launcher'ını seç.
@@ -38,10 +42,14 @@ Sorun çıkarsa root yöneticisinden modülü kapatıp yeniden başlat. Launcher
 
 ## Derleme
 
-GitHub Actions'taki **Build module** akışı kaynak ROM'dan çıkarılmış dosyalarla patched APK ve modül ZIP'ini üretir. Android ROM'unu veya launcher'ı kaynak koddan tamamen derlemez. APK/JAR girdileri git geçmişi yerine ayrı `build-inputs` release'inde tutulur; hash'leri derlemeden önce kontrol edilir.
+GitHub Actions'taki **Build module** akışı kaynak ROM'dan çıkarılmış dosyalarla patched APK ve modül ZIP'ini üretir. Android ROM'unu veya launcher'ı kaynak koddan tamamen derlemez. APK/JAR girdileri git geçmişi yerine ayrı `build-inputs-v4` release'inde tutulur; hash'leri derlemeden önce kontrol edilir.
 
 Actions sayfasından akışı elle çalıştırıp sonuçtaki artifact'i indirebilirsin. Aynı işlemi bilgisayarında veya Codespaces terminalinde yapmak için [derleme notlarına](docs/BUILD.md) bak.
 
 ## Kaynaklar
 
 Launcher ve hava durumu kodu crDroid, OmniROM ve AOSP çalışmalarına dayanıyor. Bu repo port scriptlerini, modül şablonunu ve Recents overlay kaynağını içeriyor. Kullanılan upstream commit'leri, dosya hash'leri ve imza bilgisi [SOURCES.md](docs/SOURCES.md) içinde. Portun nasıl çalıştığı ve cihaz testleri [PORT.md](docs/PORT.md) içinde.
+
+## Sorun mu buldun?
+
+Lütfen cihazını, ROM ve modül sürümünü, sorunu hangi adımlarla yaşadığını yazarak [issue aç](https://github.com/Berkwe/crdroid-home-evox/issues). Ekran görüntüsü veya ilgili logcat satırları da yardımcı olabilir. Diğer ROM’lar denenmedi ama karşılaştığın sorunları paylaşabilirsin.

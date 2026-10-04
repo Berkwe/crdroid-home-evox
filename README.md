@@ -24,9 +24,13 @@ It does not replace framework files or SystemUI. Disabling the module and reboot
 
 This module also breaks Pixel Launcher; it can crash with a “keeps stopping” message. Use the crDroid launcher as your default Home app while the module is installed. To switch back to Pixel Launcher, disable the module and reboot first.
 
+## v4 navigation fix
+
+v4 fixes the missing gesture navigation bar and the oversized space below the keyboard found in v3. A small overlay maps the launcher’s navigation dimensions to the correct Evolution X resources. The launcher APK and existing Recents overlay are preserved.
+
 ## Installation
 
-1. Download `crDroidHome-EvoX-v3.zip` from [Releases](https://github.com/Berkwe/crdroid-home-evox/releases/latest).
+1. Download `crDroidHome-EvoX-v4.zip` from [Releases](https://github.com/Berkwe/crdroid-home-evox/releases/latest).
 2. Back up your previous launcher module and settings. Other modules that change the launcher or Recents may conflict.
 3. Install the ZIP through your root manager with Mountify installed, then reboot.
 4. Select the crDroid launcher as your default Home app if needed.
@@ -38,10 +42,14 @@ If something goes wrong, disable the module through your root manager and reboot
 
 ## Building
 
-The **Build module** workflow in GitHub Actions produces the patched APK and module ZIP from files extracted from the source ROM. It does not build the full Android ROM or launcher from source. The APK/JAR inputs are kept in a separate `build-inputs` release instead of git history, and their hashes are checked before building.
+The **Build module** workflow in GitHub Actions produces the patched APK and module ZIP from files extracted from the source ROM. It does not build the full Android ROM or launcher from source. The APK/JAR inputs are kept in a separate `build-inputs-v4` release instead of git history, and their hashes are checked before building.
 
 Run the workflow manually from the Actions page and download its output artifact. For the same process on your computer or in a Codespaces terminal, see the [build notes](docs/BUILD.md) (in Turkish).
 
 ## Sources
 
 The launcher and weather code come from crDroid, OmniROM, and AOSP. This repository contains the port scripts, module template, and Recents overlay source. The upstream commits, file hashes, and signing details are listed in [SOURCES.md](docs/SOURCES.md). The port implementation and device tests are described in [PORT.md](docs/PORT.md). These detailed notes are currently in Turkish.
+
+## Found a problem?
+
+Please [open an issue](https://github.com/Berkwe/crdroid-home-evox/issues) with your device, ROM and module versions, and the steps that trigger the problem. A screenshot or relevant logcat lines can help. Other ROMs are untested, but reports are welcome.
