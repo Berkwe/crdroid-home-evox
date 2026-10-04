@@ -35,3 +35,5 @@ Derleme dokuz OmniJawsClient sınıfını bekler. Orijinal launcher'ın manifest
 APK, kaynak launcher ile eşleşen **yayımlanmış AOSP platform test anahtarı** ile imzalanır. Bu, Evolution X'in özel imza anahtarı değildir. İmza denetimini kapatan bir patch uygulanmaz.
 
 Scriptlerin başarılı çalışması cihaz uyumluluğu testi yerine geçmez. `build-report.json` bu yüzden `device_tested: false` içerir. Paylaşılan v3 sürümünün gerçek cihaz testleri [PORT.md](PORT.md) içinde.
+
+İlk [GitHub Actions derlemesi](https://github.com/Berkwe/crdroid-home-evox/actions/runs/37214921970) başarılı oldu. İndirilen APK'nın tüm 9.094 ZIP entry'sinin açılmış içeriği, telefon testindeki APK ile karşılaştırılıp aynı bulundu. İmza ve diğer modül dosyaları da doğrulandı. Sıkıştırma araçlarının sürümü APK'nın toplam hash'ini değiştirebilir; aynı dosya içerikleri her ortamda aynı arşiv baytlarını garanti etmez. v3.0 release'inde doğrudan telefonda denenmiş ZIP paylaşılır.

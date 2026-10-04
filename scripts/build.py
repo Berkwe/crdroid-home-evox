@@ -50,7 +50,7 @@ def main():
         for entry in src.infolist():
             if not re.fullmatch(r'META-INF/[^/]+\.(SF|RSA|DSA|EC|MF)', entry.filename, re.I):
                 dst.writestr(entry, src.read(entry.filename))
-        # Match the tested v3 APK timestamp so repeated builds have stable bytes.
+        # Pin the timestamp; compression libraries may still change archive bytes.
         dex_entry = zipfile.ZipInfo('classes3.dex', (2026, 10, 4, 18, 17, 52))
         dex_entry.compress_type = zipfile.ZIP_STORED
         dst.writestr(dex_entry, (build/'omnijaws-client.dex').read_bytes())
